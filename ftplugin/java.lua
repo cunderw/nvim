@@ -44,22 +44,17 @@ local workspace_dir = WORKSPACE_PATH .. project_name
 
 -- TODO: Testing
 
-JAVA_DAP_ACTIVE = true
 
 local bundles = {}
-
-if JAVA_DAP_ACTIVE then
-  vim.list_extend(bundles, vim.split(vim.fn.glob(home .. "/.config/nvim/vscode-java-test/server/*.jar"), "\n"))
-  vim.list_extend(
-    bundles,
-    vim.split(
-      vim.fn.glob(
-        home .. "/.config/nvim/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar"
-      ),
-      "\n"
-    )
+vim.list_extend(
+  bundles,
+  vim.split(
+    vim.fn.glob(
+      home .. "/.config/nvim/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar"
+    ),
+    "\n"
   )
-end
+)
 
 -- See `:help vim.lsp.start_client` for an overview of the supported `config` options.
 local config = {
@@ -118,16 +113,21 @@ local config = {
   -- for a list of options
   settings = {
     java = {
-      -- jdt = {
-      --   ls = {
-      --     vmargs = "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx1G -Xms100m"
-      --   }
-      -- },
       eclipse = {
         downloadSources = true,
       },
       configuration = {
         updateBuildConfiguration = "interactive",
+        runtimes = {
+          {
+            name = "JavaSE-1.8",
+            path = "/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home",
+          },
+          {
+            name = "JavaSE-18",
+            path = "/Library/Java/JavaVirtualMachines/temurin-18.jdk/Contents/Home",
+          }
+        }
       },
       maven = {
         downloadSources = true,
@@ -148,9 +148,6 @@ local config = {
       },
       format = {
         enabled = false,
-        -- settings = {
-        --   profile = "asdf"
-        -- }
       },
     },
     signatureHelp = { enabled = true },
@@ -193,7 +190,6 @@ local config = {
   --
   -- If you don't plan on using the debugger or other eclipse.jdt.ls plugins you can remove this
   init_options = {
-    -- bundles = {},
     bundles = bundles,
   },
 }
@@ -207,9 +203,7 @@ jdtls.start_or_attach(config)
 vim.cmd "command! -buffer -nargs=? -complete=custom,v:lua.require'jdtls'._complete_compile JdtCompile lua require('jdtls').compile(<f-args>)"
 vim.cmd "command! -buffer -nargs=? -complete=custom,v:lua.require'jdtls'._complete_set_runtime JdtSetRuntime lua require('jdtls').set_runtime(<f-args>)"
 vim.cmd "command! -buffer JdtUpdateConfig lua require('jdtls').update_project_config()"
--- vim.cmd "command! -buffer JdtJol lua require('jdtls').jol()"
 vim.cmd "command! -buffer JdtBytecode lua require('jdtls').javap()"
--- vim.cmd "command! -buffer JdtJshell lua require('jdtls').jshell()"
 
 local status_ok, which_key = pcall(require, "which-key")
 if not status_ok then
@@ -235,7 +229,7 @@ local vopts = {
 }
 
 local mappings = {
-  L = {
+  J = {
     name = "Java",
     o = { "<Cmd>lua require'jdtls'.organize_imports()<CR>", "Organize Imports" },
     v = { "<Cmd>lua require('jdtls').extract_variable()<CR>", "Extract Variable" },
@@ -247,7 +241,7 @@ local mappings = {
 }
 
 local vmappings = {
-  L = {
+  J = {
     name = "Java",
     v = { "<Esc><Cmd>lua require('jdtls').extract_variable(true)<CR>", "Extract Variable" },
     c = { "<Esc><Cmd>lua require('jdtls').extract_constant(true)<CR>", "Extract Constant" },
