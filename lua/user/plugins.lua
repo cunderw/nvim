@@ -49,9 +49,11 @@ return packer.startup(function(use)
   -- Editor Utils
   use({ "JoosepAlviste/nvim-ts-context-commentstring" })
   use({ "itchyny/vim-highlighturl", event = "BufRead"})
+  use({ "karb94/neoscroll.nvim" })
   use({ "lukas-reineke/indent-blankline.nvim" })
   use({ "norcalli/nvim-colorizer.lua" })
   use({ "numToStr/Comment.nvim" })
+  use({ "nvim-treesitter/nvim-treesitter" })
   use({ "p00f/nvim-ts-rainbow" })
   use({ "preservim/vimux" })
   use({ "windwp/nvim-autopairs" }) -- Autopairs, integrates with both cmp and treesitter
@@ -72,18 +74,22 @@ return packer.startup(function(use)
   use({ "lewis6991/impatient.nvim" })
   use({ "moll/vim-bbye" })
   use({ "nvim-lua/plenary.nvim" }) -- Useful lua functions used by lots of plugins
+  use({ "rcarriga/nvim-notify" })
+  use({ "tversteeg/registers.nvim" })
   use({ "vimpostor/vim-tpipeline" })
 
   -- Colorschemes
   use({ "folke/tokyonight.nvim" })
 
   -- Completion plugins
-  use({ "hrsh7th/nvim-cmp" }) -- The completion plugin
   use({ "hrsh7th/cmp-buffer" }) -- buffer completions
-  use({ "hrsh7th/cmp-path" }) -- path completions
-  use({ "saadparwaiz1/cmp_luasnip" }) -- snippet completions
+  use({ "hrsh7th/cmp-cmdline" })-- cmdline completions
+  use({ "hrsh7th/cmp-emoji" })
   use({ "hrsh7th/cmp-nvim-lsp" })
   use({ "hrsh7th/cmp-nvim-lua" })
+  use({ "hrsh7th/cmp-path" }) -- path completions
+  use({ "hrsh7th/nvim-cmp" }) -- The completion plugin
+  use({ "saadparwaiz1/cmp_luasnip" }) -- snippet completions
 
   -- snippets
   use({ "L3MON4D3/LuaSnip" }) --snippet engine
@@ -98,9 +104,6 @@ return packer.startup(function(use)
   use({ "nvim-telescope/telescope.nvim" })
 
   -- Treesitter
-  use({
-    "nvim-treesitter/nvim-treesitter",
-  })
 
   -- Git
   use({ "lewis6991/gitsigns.nvim" })

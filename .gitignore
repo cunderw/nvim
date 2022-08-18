@@ -42,5 +42,5 @@ luac.out
 
 plugin/packer_compiled.lua
 session
-.vscode-java-test
-.java-debug
+vscode-java-test
+java-debug
