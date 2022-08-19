@@ -25,7 +25,6 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   callback = function()
     vim.cmd [[
       nnoremap <silent> <buffer> <m-r> :close<CR>
-      " nnoremap <silent> <buffer> <m-r> <NOP> 
       set nobuflisted 
     ]]
   end,
@@ -64,7 +63,6 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
   pattern = { "term://*" },
   callback = function()
     vim.cmd "startinsert!"
-    -- TODO: if java = 2
     vim.cmd "set cmdheight=1"
   end,
 })
@@ -86,13 +84,6 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 })
 
 vim.cmd "autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif"
--- vim.api.nvim_create_autocmd({ "BufEnter" }, {
---   callback = function()
---     vim.cmd [[
---       if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif
---     ]]
---   end,
--- })
 
 vim.api.nvim_create_autocmd({ "VimResized" }, {
   callback = function()
@@ -145,23 +136,10 @@ vim.api.nvim_create_autocmd({ "CursorHold" }, {
       return
     end
     if luasnip.expand_or_jumpable() then
-      -- ask maintainer for option to make this silent
-      -- luasnip.unlink_current()
       vim.cmd [[silent! lua require("luasnip").unlink_current()]]
     end
   end,
 })
-
--- vim.api.nvim_create_autocmd({ "ModeChanged" }, {
---   callback = function()
---     local luasnip = require "luasnip"
---     if luasnip.expand_or_jumpable() then
---       -- ask maintainer for option to make this silent
---       -- luasnip.unlink_current()
---       vim.cmd [[silent! lua require("luasnip").unlink_current()]]
---     end
---   end,
--- })
 
 vim.api.nvim_create_autocmd({ "BufWritePost" }, {
   pattern = { "*.ts" },
@@ -169,3 +147,24 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
     vim.lsp.buf.format { async = true }
   end,
 })
+
+-- make bg transparent
+vim.api.nvim_create_autocmd("ColorScheme", {
+    pattern = "*",
+    callback = function()
+      local hl_groups = {
+        "Normal",
+        "SignColumn",
+        "NormalNC",
+        "TelescopeBorder",
+        "NvimTreeNormal",
+        "EndOfBuffer",
+        "MsgArea",
+        --"NonText",
+      }
+      for _, name in ipairs(hl_groups) do
+        vim.cmd(string.format("highlight %s ctermbg=none guibg=none", name))
+      end
+    end,
+  })
+
