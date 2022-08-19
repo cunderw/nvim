@@ -48,7 +48,7 @@ return packer.startup(function(use)
 
   -- Editor Utils
   use({ "JoosepAlviste/nvim-ts-context-commentstring" })
-  use({ "itchyny/vim-highlighturl", event = "BufRead"})
+  use({ "itchyny/vim-highlighturl", event = "BufRead" })
   use({ "karb94/neoscroll.nvim" })
   use({ "lukas-reineke/indent-blankline.nvim" })
   use({ "norcalli/nvim-colorizer.lua" })
@@ -57,12 +57,15 @@ return packer.startup(function(use)
   use({ "p00f/nvim-ts-rainbow" })
   use({ "preservim/vimux" })
   use({ "windwp/nvim-autopairs" }) -- Autopairs, integrates with both cmp and treesitter
-  use({ 'phaazon/hop.nvim', branch = 'v2'})
+  use({ 'phaazon/hop.nvim', branch = 'v2' })
   use({ 'simrat39/symbols-outline.nvim' })
   use({ 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' })
-  
+  use({
+    'weilbith/nvim-code-action-menu',
+    cmd = 'CodeActionMenu',
+  })
   -- Projects / Sessions
-  use({ "folke/persistence.nvim", event = "BufReadPre", module = "persistence"})
+  use({ "folke/persistence.nvim", event = "BufReadPre", module = "persistence" })
   use({ "ahmedkhalf/project.nvim" })
 
   -- Misc utils
@@ -83,7 +86,7 @@ return packer.startup(function(use)
 
   -- Completion plugins
   use({ "hrsh7th/cmp-buffer" }) -- buffer completions
-  use({ "hrsh7th/cmp-cmdline" })-- cmdline completions
+  use({ "hrsh7th/cmp-cmdline" }) -- cmdline completions
   use({ "hrsh7th/cmp-emoji" })
   use({ "hrsh7th/cmp-nvim-lsp" })
   use({ "hrsh7th/cmp-nvim-lua" })
@@ -99,7 +102,7 @@ return packer.startup(function(use)
   use({ "neovim/nvim-lspconfig" }) -- enable LSP
   use({ "jose-elias-alvarez/null-ls.nvim" }) -- for formatters and linters
   use({ "williamboman/nvim-lsp-installer" })
-  -- Cannot make work reliably yet 
+  -- Cannot make work reliably yet
   -- use({ "williamboman/mason.nvim" })
   -- use({ "williamboman/mason-lspconfig.nvim" })
   use({ "ray-x/lsp_signature.nvim" })
