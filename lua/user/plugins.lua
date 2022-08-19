@@ -97,8 +97,12 @@ return packer.startup(function(use)
 
   -- LSP
   use({ "neovim/nvim-lspconfig" }) -- enable LSP
-  use({ "williamboman/nvim-lsp-installer" }) -- simple to use language server installer
   use({ "jose-elias-alvarez/null-ls.nvim" }) -- for formatters and linters
+  use({ "williamboman/nvim-lsp-installer" })
+  -- Cannot make work reliably yet 
+  -- use({ "williamboman/mason.nvim" })
+  -- use({ "williamboman/mason-lspconfig.nvim" })
+  use({ "ray-x/lsp_signature.nvim" })
 
   -- Telescope
   use({ "nvim-telescope/telescope.nvim" })
@@ -116,6 +120,8 @@ return packer.startup(function(use)
   use({ "mfussenegger/nvim-jdtls" })
 
   -- Debug
+  use({ "mfussenegger/nvim-dap" })
+  use({ "rcarriga/nvim-dap-ui" })
   use({
     "puremourning/vimspector", -- Visual debugging
     cmd = { "VimspectorInstall", "VimspectorUpdate" },
