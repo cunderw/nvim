@@ -64,6 +64,16 @@ return packer.startup(function(use)
     'weilbith/nvim-code-action-menu',
     cmd = 'CodeActionMenu',
   })
+  use({
+    'sudormrfbin/cheatsheet.nvim',
+    requires = {
+      { 'nvim-telescope/telescope.nvim' },
+      { 'nvim-lua/popup.nvim' },
+      { 'nvim-lua/plenary.nvim' },
+    }
+  })
+  use({ "gennaro-tedesco/nvim-peekup" })
+
   -- Projects / Sessions
   use({ "folke/persistence.nvim", event = "BufReadPre", module = "persistence" })
   use({ "ahmedkhalf/project.nvim" })
@@ -129,6 +139,15 @@ return packer.startup(function(use)
     "puremourning/vimspector", -- Visual debugging
     cmd = { "VimspectorInstall", "VimspectorUpdate" },
     fn = { "vimspector#Launch()", "vimspector#ToggleBreakpoint", "vimspector#Continue" },
+  })
+  use({
+    "nvim-neotest/neotest",
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      "antoinemadec/FixCursorHold.nvim",
+      "nvim-neotest/neotest-go",
+    }
   })
 
   -- Golang
