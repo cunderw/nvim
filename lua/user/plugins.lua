@@ -88,7 +88,6 @@ return packer.startup(function(use)
   use({ "moll/vim-bbye" })
   use({ "nvim-lua/plenary.nvim" }) -- Useful lua functions used by lots of plugins
   use({ "rcarriga/nvim-notify" })
-  use({ "tversteeg/registers.nvim" })
   use({ "vimpostor/vim-tpipeline" })
 
   -- Colorschemes
