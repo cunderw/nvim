@@ -155,7 +155,7 @@ return packer.startup(function(use)
   use({ "fatih/vim-go" })
   use({ "rfratto/vim-go-testify" })
   use({ "sebdah/vim-delve" })
-
+  use({ "crispgm/nvim-go" })
   if PACKER_BOOTSTRAP then
     require("packer").sync()
   end
