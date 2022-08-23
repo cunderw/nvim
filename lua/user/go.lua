@@ -39,3 +39,12 @@ go.setup({
     -- quick type
     quick_type_flags = {'--just-types'},
 })
+
+local lspconfig = require 'lspconfig'
+ lspconfig.gopls.setup {
+   settings = {
+     gopls = {
+       env = { GOFLAGS = "-tags=integration" },
+     },
+   }
+ }
