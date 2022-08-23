@@ -119,8 +119,6 @@ return packer.startup(function(use)
   -- Telescope
   use({ "nvim-telescope/telescope.nvim" })
 
-  -- Treesitter
-
   -- Git
   use({ "lewis6991/gitsigns.nvim" })
   use({ "f-person/git-blame.nvim" })
