@@ -3,6 +3,12 @@ if not status_ok then
   return
 end
 
+local vim = vim 
+local opt = vim.opt
+
+opt.foldmethod = "expr"
+opt.foldexpr = "nvim_treesitter#foldexpr()"
+
 configs.setup({
   ensure_installed = { -- one of "all" or a list of languages
     "bash",

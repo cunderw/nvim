@@ -150,21 +150,23 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 
 -- make bg transparent
 vim.api.nvim_create_autocmd("ColorScheme", {
-    pattern = "*",
-    callback = function()
-      local hl_groups = {
-        "Normal",
-        "SignColumn",
-        "NormalNC",
-        "TelescopeBorder",
-        "NvimTreeNormal",
-        "EndOfBuffer",
-        "MsgArea",
-        --"NonText",
-      }
-      for _, name in ipairs(hl_groups) do
-        vim.cmd(string.format("highlight %s ctermbg=none guibg=none", name))
-      end
-    end,
-  })
+  pattern = "*",
+  callback = function()
+    local hl_groups = {
+      "Normal",
+      "SignColumn",
+      "NormalNC",
+      "TelescopeBorder",
+      "NvimTreeNormal",
+      "EndOfBuffer",
+      "MsgArea",
+      --"NonText",
+    }
+    for _, name in ipairs(hl_groups) do
+      vim.cmd(string.format("highlight %s ctermbg=none guibg=none", name))
+    end
+  end,
+})
 
+-- open folds on file open
+vim.cmd "autocmd BufReadPost,FileReadPost * normal zR"
