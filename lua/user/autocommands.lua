@@ -169,4 +169,9 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 })
 
 -- open folds on file open
-vim.cmd "autocmd BufReadPost,FileReadPost * normal zR"
+vim.api.nvim_create_autocmd({"BufReadPost"},{
+  pattern = "*",
+  callback = function()
+    vim.cmd "silent! :%foldopen!"
+  end,
+})
