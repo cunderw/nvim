@@ -44,3 +44,4 @@ plugin/packer_compiled.lua
 session
 vscode-java-test
 java-debug
+jdtls

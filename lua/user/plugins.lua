@@ -59,6 +59,7 @@ return packer.startup(function(use)
   use({ "windwp/nvim-autopairs" }) -- Autopairs, integrates with both cmp and treesitter
   use({ 'phaazon/hop.nvim', branch = 'v2' })
   use({ 'simrat39/symbols-outline.nvim' })
+  use({ 'simrat39/inlay-hints.nvim' })
   use({ 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' })
   use({
     'weilbith/nvim-code-action-menu',

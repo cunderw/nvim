@@ -81,11 +81,23 @@ local function lsp_keymaps(bufnr)
 end
 
 M.on_attach = function(client, bufnr)
-	-- vim.notify(client.name .. " starting...")
-	-- TODO: refactor this into a method that checks if string in list
 	if client.name == "tsserver" then
-		client.resolved_capabilities.document_formatting = false
+		client.server_capabilities.document_formatting = false
 	end
+
+	if client.name == "jdt.ls" then
+    vim.lsp.codelens.refresh()
+    if JAVA_DAP_ACTIVE then
+      require("jdtls").setup_dap { hotcodereplace = "auto" }
+      require("jdtls.dap").setup_dap_main_class_configs()
+    end
+		-- client.server_capabilities.document_formatting = false
+	end
+
+	if client.name == "sumneko_lua" then
+		client.server_capabilities.document_formatting = false
+	end
+
 	lsp_keymaps(bufnr)
 	lsp_highlight_document(client)
 end
