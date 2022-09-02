@@ -2,7 +2,10 @@ return {
 	settings = {
 
 		Lua = {
-			diagnostics = {
+		  hint = {
+        enable = true,
+      },
+      diagnostics = {
 				globals = { "vim" },
 			},
 			workspace = {

@@ -4,8 +4,6 @@ if not status_ok then
 	return
 end
 
-local ih = require("inlay-hints")
-
 go.setup({
 	-- notify: use nvim-notify
 	notify = false,
@@ -42,23 +40,3 @@ go.setup({
 	quick_type_flags = { "--just-types" },
 })
 
-local lspconfig = require("lspconfig")
-lspconfig.gopls.setup({
-	on_attach = function(c, b)
-		ih.on_attach(c, b)
-	end,
-	settings = {
-		gopls = {
-			env = { GOFLAGS = "-tags=integration" },
-			hints = {
-				assignVariableTypes = true,
-				compositeLiteralFields = true,
-				compositeLiteralTypes = true,
-				constantValues = true,
-				functionTypeParameters = true,
-				parameterNames = true,
-				rangeVariableTypes = true,
-			},
-		},
-	},
-})

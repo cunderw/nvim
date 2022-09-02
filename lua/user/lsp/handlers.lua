@@ -1,6 +1,5 @@
 local M = {}
 
--- TODO: backfill this to template
 M.setup = function()
 	local signs = {
 		{ name = "DiagnosticSignError", text = "" },
@@ -47,13 +46,11 @@ M.setup = function()
 end
 
 local function lsp_highlight_document(client)
-	-- Set autocommands conditional on server_capabilities
 	local status_ok, illuminate = pcall(require, "illuminate")
 	if not status_ok then
 		return
 	end
 	illuminate.on_attach(client)
-	-- end
 end
 
 local function lsp_keymaps(bufnr)
