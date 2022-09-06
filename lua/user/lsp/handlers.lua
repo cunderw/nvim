@@ -12,10 +12,8 @@ M.setup = function()
 		vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
 	end
 
-	local config = {
-		-- disable virtual text
+	local diagConfig = {
 		virtual_text = true,
-		-- show signs
 		signs = {
 			active = signs,
 		},
@@ -32,7 +30,7 @@ M.setup = function()
 		},
 	}
 
-	vim.diagnostic.config(config)
+	vim.diagnostic.config(diagConfig)
 
 	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
 		border = "rounded",
@@ -77,26 +75,49 @@ local function lsp_keymaps(bufnr)
 	vim.cmd([[ command! Format execute 'lua vim.lsp.buf.format{async=true}' ]])
 end
 
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+local allow_format = {
+	"null-ls",
+	"jdt.ls",
+}
+local lsp_formatting = function(bufnr)
+	local found = false
+	vim.lsp.buf.format({
+		filter = function(client)
+			for _, v in ipairs(allow_format) do
+				if v == client.name then
+					found = true
+					break
+				end
+			end
+			return found
+		end,
+		bufnr = bufnr,
+	})
+end
+
 M.on_attach = function(client, bufnr)
-	if client.name == "tsserver" then
-		client.server_capabilities.document_formatting = false
-	end
-
 	if client.name == "jdt.ls" then
-    vim.lsp.codelens.refresh()
-    if JAVA_DAP_ACTIVE then
-      require("jdtls").setup_dap { hotcodereplace = "auto" }
-      require("jdtls.dap").setup_dap_main_class_configs()
-    end
-		-- client.server_capabilities.document_formatting = false
-	end
-
-	if client.name == "sumneko_lua" then
-		client.server_capabilities.document_formatting = false
+		vim.lsp.codelens.refresh()
+		if JAVA_DAP_ACTIVE then
+			require("jdtls").setup_dap({ hotcodereplace = "auto" })
+			require("jdtls.dap").setup_dap_main_class_configs()
+		end
 	end
 
 	lsp_keymaps(bufnr)
 	lsp_highlight_document(client)
+
+	if client.supports_method("textDocument/formatting") then
+		vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+		vim.api.nvim_create_autocmd("BufWritePre", {
+			group = augroup,
+			buffer = bufnr,
+			callback = function()
+				lsp_formatting(bufnr)
+			end,
+		})
+	end
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
