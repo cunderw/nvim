@@ -187,6 +187,15 @@ local mappings = {
       t = { "<cmd>lua require('user.lsp.peek').Peek('typeDefinition')<cr>", "Type Definition" },
       i = { "<cmd>lua require('user.lsp.peek').Peek('implementation')<cr>", "Implementation" },
     },
+    T = {
+      name = "Trouble",
+      t = { "<cmd>TroubleToggle<cr>", "Toggle" },
+      w = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "Workspace Diagnostics" },
+      d = { "<cmd>TroubleToggle document_diagnostics<cr>", "Document Diagnostics" },
+      q = { "<cmd>TroubleToggle quickfix<cr>", "QuickFix" },
+      l = { "<cmd>TroubleToggle loclist<cr>", "Loc List" },
+      L = { "<cmd>TroubleToggle lsp_references<cr>", "Reference" },
+    },
   },
 
   b = {
@@ -231,6 +240,10 @@ local mappings = {
     name = "Navigation",
     h = { "<cmd>HopWord<cr>", "Hop" },
     o = { "<cmd>SymbolsOutline<cr>", "Outline" },
+    t = { "<cmd>tabnew<cr>", "New Tab" },
+    n = { "<cmd>tabn<cr>", "Next Tab" },
+    p = { "<cmd>tabp<ncr>", "Previous Tab" },
+    c = { "<cmd>tabclose<cr>", "Close Tab" },
   },
 
   S = {

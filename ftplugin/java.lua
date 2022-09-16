@@ -95,6 +95,7 @@ local config = {
 		java = {
 			format = {
 				enabled = true,
+				onType = true,
 				settings = {
 					url = "/Users/cunderw/.config/nvim/ftplugin/eclipse-java-google-style.xml",
 				},

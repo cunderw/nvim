@@ -1,19 +1,18 @@
 return {
-	settings = {
-
-		Lua = {
-		  hint = {
+  settings = {
+    Lua = {
+      hint = {
         enable = true,
       },
       diagnostics = {
-				globals = { "vim" },
-			},
-			workspace = {
-				library = {
-					[vim.fn.expand("$VIMRUNTIME/lua")] = true,
-					[vim.fn.stdpath("config") .. "/lua"] = true,
-				},
-			},
-		},
-	},
+        globals = { "vim" },
+      },
+      workspace = {
+        library = {
+          [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+          [vim.fn.stdpath("config") .. "/lua"] = true,
+        },
+      },
+    },
+  },
 }

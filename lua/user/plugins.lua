@@ -75,7 +75,7 @@ return packer.startup(function(use)
     },
   })
   use({ "gennaro-tedesco/nvim-peekup" })
-
+  use({ 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async' })
   -- Projects / Sessions
   use({ "folke/persistence.nvim", event = "BufReadPre", module = "persistence" })
   use({ "ahmedkhalf/project.nvim" })
@@ -91,9 +91,11 @@ return packer.startup(function(use)
   use({ "nvim-lua/plenary.nvim" }) -- Useful lua functions used by lots of plugins
   use({ "rcarriga/nvim-notify" })
   use({ "vimpostor/vim-tpipeline" })
+  use({ "tiagovla/scope.nvim" })
 
   -- Colorschemes
   use({ "folke/tokyonight.nvim" })
+  use({ "tiagovla/tokyodark.nvim" })
 
   -- Completion plugins
   use({ "hrsh7th/cmp-buffer" }) -- buffer completions
@@ -113,10 +115,11 @@ return packer.startup(function(use)
   use({ "neovim/nvim-lspconfig" }) -- enable LSP
   use({ "jose-elias-alvarez/null-ls.nvim" }) -- for formatters and linters
   use({ "williamboman/nvim-lsp-installer" })
-  -- Cannot make work reliably yet
-  -- use({ "williamboman/mason.nvim" })
-  -- use({ "williamboman/mason-lspconfig.nvim" })
   use({ "ray-x/lsp_signature.nvim" })
+  use({
+    "folke/trouble.nvim",
+    requires = "kyazdani42/nvim-web-devicons",
+  })
 
   -- Telescope
   use({ "nvim-telescope/telescope.nvim" })
