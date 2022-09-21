@@ -20,7 +20,9 @@ bufferline.setup({
     tab_size = 21,
     diagnostics = "nvim_lsp", -- | "nvim_lsp" | "coc",
     diagnostics_update_in_insert = false,
-    offsets = { { filetype = "NvimTree", text = "", padding = 1 } },
+    offsets = {
+      { filetype = "NvimTree", text = "", padding = 1 }
+    },
     show_buffer_icons = true,
     show_buffer_close_icons = true,
     show_close_icon = true,
@@ -29,16 +31,26 @@ bufferline.setup({
     separator_style = "thick", -- | "thick" | "thin" | { 'any', 'any' },
     enforce_regular_tabs = true,
     always_show_bufferline = true,
+    custom_filter = function(buf_number, buf_numbers)
+      -- filter out filetypes you don't want to see
+      -- if vim.bo[buf_number].filetype ~= "<i-dont-want-to-see-this>" then
+      --   return true
+      -- end
+      -- filter out by buffer name
+      if vim.fn.bufname(buf_number) ~= "[dap-repl]" then
+        return true
+      end
+    end,
     groups = {
       items = {
         {
-          name = "Docs",
+          name = "Proto",
           highlight = { underline = true, sp = "blue" },
           auto_close = true,
           icon = "",
-          priority = 1,
+          priority = 2,
           matcher = function(buf)
-            return buf.name:match(".md") or buf.name:match(".txt") or buf.name:match("README")
+            return buf.name:match(".proto")
           end,
         },
         {
@@ -46,7 +58,7 @@ bufferline.setup({
           highlight = { underline = true, sp = "blue" },
           auto_close = true,
           icon = "",
-          priority = 2,
+          priority = 3,
           matcher = function(buf)
             return buf.name:match("%_test") or buf.name:match("%_spec")
           end,
