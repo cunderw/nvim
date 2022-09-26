@@ -64,9 +64,7 @@ end
 
 local config = {
   cmd = {
-
     "/opt/homebrew/Cellar/openjdk@17/17.0.4/bin/java", -- or '/path/to/java11_or_newer/bin/java'
-
     "-Declipse.application=org.eclipse.jdt.ls.core.id1",
     "-Dosgi.bundles.defaultStartLevel=4",
     "-Declipse.product=org.eclipse.jdt.ls.core.product",
@@ -79,7 +77,6 @@ local config = {
     "java.base/java.util=ALL-UNNAMED",
     "--add-opens",
     "java.base/java.lang=ALL-UNNAMED",
-
     "-jar",
     vim.fn.glob(home .. "/.local/share/nvim/lsp_servers/jdtls/plugins/org.eclipse.equinox.launcher_*.jar"),
     "-configuration",
@@ -90,7 +87,6 @@ local config = {
 
   on_attach = require("user.lsp.handlers").on_attach,
   capabilities = capabilities,
-
   root_dir = root_dir,
 
   settings = {
@@ -165,7 +161,9 @@ local config = {
 
 jdtls.start_or_attach(config)
 
-require('jdtls').setup_dap()
+if JAVA_DAP_ACTIVE then
+  jdtls.setup_dap({ hotcodereplace = "auto" })
+end
 
 vim.cmd(
   "command! -buffer -nargs=? -complete=custom,v:lua.require'jdtls'._complete_compile JdtCompile lua require('jdtls').compile(<f-args>)"
@@ -209,6 +207,7 @@ local mappings = {
     c = { "<Cmd>lua require('jdtls').extract_constant()<CR>", "Extract Constant" },
     t = { "<Cmd>lua require'jdtls'.test_nearest_method()<CR>", "Test Method" },
     T = { "<Cmd>lua require'jdtls'.test_class()<CR>", "Test Class" },
+    C = { "<Cmd>lua require('jdtls.dap').setup_dap_main_class_configs()", "Setup Main Clas Configs" },
     u = { "<Cmd>JdtUpdateConfig<CR>", "Update Config" },
   },
 }

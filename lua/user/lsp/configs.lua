@@ -5,10 +5,11 @@ end
 
 local lspconfig = require("lspconfig")
 
+local install_servers = { "jsonls", "sumneko_lua", "gopls", "tsserver", "jdtls" }
 local servers = { "jsonls", "sumneko_lua", "gopls", "tsserver" }
 
 lsp_installer.setup({
-  ensure_installed = servers,
+  ensure_installed = install_servers,
 })
 
 for _, server in pairs(servers) do
