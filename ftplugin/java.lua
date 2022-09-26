@@ -165,7 +165,7 @@ local config = {
 
 jdtls.start_or_attach(config)
 
--- require('jdtls').setup_dap()
+require('jdtls').setup_dap()
 
 vim.cmd(
   "command! -buffer -nargs=? -complete=custom,v:lua.require'jdtls'._complete_compile JdtCompile lua require('jdtls').compile(<f-args>)"
