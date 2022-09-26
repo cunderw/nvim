@@ -1,18 +1,19 @@
-local status_ok, typescript = pcall(require, "typescript")
+local ts_status_ok, typescript = pcall(require, "typescript")
+if not ts_status_ok then
+  return
+end
 
-if not status_ok then
+local dapjs_status_ok, dapjs = pcall(require, "dap-vscode-js")
+if not dapjs_status_ok then
+  return
+end
+
+local dap_status_ok, dap = pcall(require, "dap")
+if not dap_status_ok then
   return
 end
 
 typescript.setup({})
-
-
-local status_ok, dapjs = pcall(require, "dap-vscode-js")
-
-if not status_ok then
-  return
-end
-
 dapjs.setup({
   -- node_path = "node", -- Path of node executable. Defaults to $NODE_PATH, and then "node"
   -- debugger_path = "(runtimedir)/site/pack/packer/opt/vscode-js-debug", -- Path to vscode-js-debug installation.
@@ -20,7 +21,7 @@ dapjs.setup({
 })
 
 for _, language in ipairs({ "typescript", "javascript" }) do
-  require("dap").configurations[language] = {
+  dap.configurations[language] = {
     {
       type = "pwa-node",
       request = "launch",

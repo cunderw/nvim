@@ -40,10 +40,44 @@ go.setup({
   quick_type_flags = { "--just-types" },
 })
 
-local status_ok, dapgo = pcall(require, "dap-go")
+local dap_go_status_ok, dapgo = pcall(require, "dap-go")
 
-if not status_ok then
+if not dap_go_status_ok then
   return
 end
 
 dapgo.setup()
+
+-- local dap_status_ok, dap = pcall(require, "dap")
+-- if not dap_status_ok then
+--   return
+-- end
+
+--dap.configurations.go = {
+--  {
+--    name = "run",
+--    type = "go",
+--    request = "launch",
+--    program = "${fileDirname}",
+--    mode = "debug",
+--    args = {
+--      "${fileDirname}/meta/local.conf"
+--    },
+--  },
+--  {
+--    name = "test",
+--    type = "go",
+--    request = "launch",
+--    program = "${file}",
+--    mode = "test",
+--  },
+--  {
+--    name = "integration",
+--    type = "go",
+--    request = "launch",
+--    program = "${file}",
+--    mode = "test",
+--    cwd = "${fileDirname}",
+--    buildFlags = "-tags=integration",
+--  },
+--}

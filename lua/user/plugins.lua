@@ -55,7 +55,6 @@ return packer.startup(function(use)
   use({ "numToStr/Comment.nvim" })
   use({ "nvim-treesitter/nvim-treesitter" })
   use({ "p00f/nvim-ts-rainbow" })
-  use({ "preservim/vimux" })
   use({ "windwp/nvim-autopairs" }) -- Autopairs, integrates with both cmp and treesitter
   use({ "phaazon/hop.nvim", branch = "v2" })
   use({ "simrat39/symbols-outline.nvim" })
@@ -147,6 +146,7 @@ return packer.startup(function(use)
   -- Debug
   use({ "mfussenegger/nvim-dap" })
   use({ "rcarriga/nvim-dap-ui" })
+  use({ "theHamsta/nvim-dap-virtual-text" })
   use({
     "nvim-neotest/neotest",
     requires = {
@@ -158,13 +158,11 @@ return packer.startup(function(use)
   })
 
   -- Golang
-  use({ "benmills/vimux-golang" })
-  use({ "fatih/vim-go" })
-  use({ "rfratto/vim-go-testify" })
-  use({ "sebdah/vim-delve" })
   use({ "crispgm/nvim-go" })
+  --use({ "ray-x/go.nvim" })
+  use({ "fatih/vim-go" })
   use({ "leoluz/nvim-dap-go" })
-  use { "mxsdev/nvim-dap-vscode-js", requires = { "mfussenegger/nvim-dap" } }
+  use({ "rfratto/vim-go-testify" })
 
   -- Typescript
   use({ "jose-elias-alvarez/typescript.nvim" })
@@ -172,6 +170,10 @@ return packer.startup(function(use)
     "microsoft/vscode-js-debug",
     opt = true,
     run = "npm install --legacy-peer-deps && npm run compile"
+  })
+  use({
+    "mxsdev/nvim-dap-vscode-js",
+    requires = { "mfussenegger/nvim-dap" }
   })
 
   if PACKER_BOOTSTRAP then
