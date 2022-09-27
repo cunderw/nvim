@@ -159,9 +159,13 @@ return packer.startup(function(use)
 
   -- Golang
   use({ "crispgm/nvim-go" })
-  use({ "fatih/vim-go" })
   use({ "leoluz/nvim-dap-go" })
   use({ "rfratto/vim-go-testify" })
+  use({
+    "golang/vscode-go",
+    opt = true,
+    run = "npm install && npm run compile",
+  })
 
   -- Typescript
   use({ "jose-elias-alvarez/typescript.nvim" })

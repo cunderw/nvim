@@ -148,6 +148,10 @@ local mappings = {
   g = {
     name = "go",
     t = { "<cmd>lua require('dap-go').debug_test()<cr>", "Debug test" },
+    f = { "<cmd>GoFormat<cr>", "Go Format" },
+    T = { "<cmd>GoTest<cr>", "Go Test" },
+    G = { "<cmd>GoGet<cr>", "Go Get" },
+    I = { "<cmd>GoImport<cr>", "Go Import" },
   },
 
   l = {

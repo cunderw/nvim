@@ -5,21 +5,23 @@ if not status_ok then
 end
 
 return {
-	on_attach = function(c, b)
-		ih.on_attach(c, b)
-	end,
-	settings = {
-		gopls = {
-			env = { GOFLAGS = "-tags=integration" },
-			hints = {
-				assignVariableTypes = true,
-				compositeLiteralFields = true,
-				compositeLiteralTypes = true,
-				constantValues = true,
-				functionTypeParameters = true,
-				parameterNames = true,
-				rangeVariableTypes = true,
-			},
-		},
-	},
+  on_attach = function(c, b)
+    if ih ~= nil then
+      ih.on_attach(c, b)
+    end
+  end,
+  settings = {
+    gopls = {
+      env = { GOFLAGS = "-tags=integration" },
+      hints = {
+        assignVariableTypes = true,
+        compositeLiteralFields = true,
+        compositeLiteralTypes = true,
+        constantValues = true,
+        functionTypeParameters = true,
+        parameterNames = true,
+        rangeVariableTypes = true,
+      },
+    },
+  },
 }
