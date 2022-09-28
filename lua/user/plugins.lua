@@ -108,6 +108,14 @@ return packer.startup(function(use)
       { "nvim-lua/plenary.nvim" },
     },
   })
+  use({ "kkharji/sqlite.lua" })
+  use({
+    "AckslD/nvim-neoclip.lua",
+    requires = {
+      { "kkharji/sqlite.lua", module = "sqlite" },
+      { "nvim-telescope/telescope.nvim" },
+    },
+  })
 
   -- Completion plugins
   use({ "hrsh7th/cmp-buffer" }) -- buffer completions

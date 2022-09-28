@@ -82,6 +82,7 @@ local opts = {
 
 local mappings = {
   ["o"] = { "<cmd>Legendary<cr>", "Legendary" },
+  ["C"] = { "<cmd>lua require('telescope').extensions.neoclip.default()<cr>", "Neoclip" },
   ["a"] = { "<cmd>Alpha<cr>", "Alpha" },
   ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
   ["w"] = { "<cmd>w!<CR>", "Save" },
