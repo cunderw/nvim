@@ -175,6 +175,7 @@ local mappings = {
     t = { "<cmd>lua require('telescope.builtin').lsp_type_definitions()<cr>", "Type Definition" },
     w = { "<cmd>lua require('telescope.builtin').diagnostics()<cr>", "Diagnostics" },
     o = { "<cmd>SymbolsOutline<cr>", "Outline" },
+    O = { "<cmd>TodoTelescope<cr>", "Todo" },
     P = {
       name = "Peek",
       d = { "<cmd>lua require('user.lsp.peek').Peek('definition')<cr>", "Definition" },

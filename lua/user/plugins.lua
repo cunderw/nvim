@@ -84,6 +84,11 @@ return packer.startup(function(use)
   use({ 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async' })
   use({ "p00f/nvim-ts-rainbow" })
   use({ "itchyny/vim-highlighturl", event = "BufRead" })
+  -- Lua
+  use({
+    "folke/todo-comments.nvim",
+    requires = "nvim-lua/plenary.nvim",
+  })
 
   -- Projects / Sessions
   use({ "folke/persistence.nvim", event = "BufReadPre", module = "persistence" })
