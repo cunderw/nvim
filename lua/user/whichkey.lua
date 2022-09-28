@@ -161,7 +161,7 @@ local mappings = {
     H = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", "Signature Help" },
     R = { "<cmd>lua require('telescope.builtin').lsp_references()<cr>", "References" },
     S = { "<cmd>lua require('telescope.builtin').lsp_workspace_symbols()<cr>", "Workspace Symbols" },
-    a = { "<cmd>CodeActionMenu<cr>", "Code Action" },
+    a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
     d = { "<cmd>lua require('telescope.builtin').lsp_definitions()<cr>", "Goto Definition" },
     f = { "<cmd>lua vim.lsp.buf.format({async = true})<cr>", "Format" },
     h = { "<cmd>lua vim.lsp.buf.hover()<cr>", "Hover" },
@@ -255,9 +255,22 @@ local mappings = {
   },
 }
 
+local vopts = {
+  mode = "v", -- VISUAL mode
+  prefix = "<leader>",
+  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+  silent = true, -- use `silent` when creating keymaps
+  noremap = true, -- use `noremap` when creating keymaps
+  nowait = true, -- use `nowait` when creating keymaps
+}
+
+local vmappings = {
+  ["r"] = { "<cmd>lua require('telescope').load_extension('refactoring').refactors()<cr>", "Refactor" },
+}
+
 which_key.setup(setup)
 which_key.register(mappings, opts)
-
+which_key.register(vmappings, vopts)
 --local l_status_ok, legendary = pcall(require, "legendary")
 --if not l_status_ok then
 --  return

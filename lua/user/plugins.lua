@@ -59,10 +59,6 @@ return packer.startup(function(use)
   use({ "goolord/alpha-nvim" })
   use({ "rcarriga/nvim-notify" })
   use({
-    "weilbith/nvim-code-action-menu",
-    cmd = "CodeActionMenu",
-  })
-  use({
     "Pocco81/true-zen.nvim",
     config = function()
       require("true-zen").setup {}
@@ -147,6 +143,13 @@ return packer.startup(function(use)
     requires = "kyazdani42/nvim-web-devicons",
   })
 
+  use {
+    "ThePrimeagen/refactoring.nvim",
+    requires = {
+      { "nvim-lua/plenary.nvim" },
+      { "nvim-treesitter/nvim-treesitter" }
+    }
+  }
   -- Git
   use({ "lewis6991/gitsigns.nvim" })
   use({ "f-person/git-blame.nvim" })
