@@ -77,6 +77,12 @@ return packer.startup(function(use)
   })
   use({ "gennaro-tedesco/nvim-peekup" })
   use({ 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async' })
+  use({
+    "Pocco81/true-zen.nvim",
+    config = function()
+      require("true-zen").setup {}
+    end,
+  })
 
   -- Projects / Sessions
   use({ "folke/persistence.nvim", event = "BufReadPre", module = "persistence" })

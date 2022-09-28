@@ -102,7 +102,7 @@ local mappings = {
     u = { "<cmd>PackerUpdate<cr>", "Update" },
   },
 
-  G = {
+  g = {
     name = "Git",
     g = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Lazygit" },
     j = { "<cmd>lua require('gitsigns').next_hunk()<cr>", "Next Hunk" },
@@ -145,14 +145,6 @@ local mappings = {
     v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
   },
 
-  g = {
-    name = "go",
-    t = { "<cmd>lua require('dap-go').debug_test()<cr>", "Debug test" },
-    f = { "<cmd>GoFormat<cr>", "Go Format" },
-    T = { "<cmd>GoTest<cr>", "Go Test" },
-    G = { "<cmd>GoGet<cr>", "Go Get" },
-    I = { "<cmd>GoImport<cr>", "Go Import" },
-  },
 
   l = {
     name = "LSP",
@@ -160,7 +152,7 @@ local mappings = {
     H = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", "Signature Help" },
     R = { "<cmd>lua require('telescope.builtin').lsp_references()<cr>", "References" },
     S = { "<cmd>lua require('telescope.builtin').lsp_workspace_symbols()<cr>", "Workspace Symbols" },
-    a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
+    a = { "<cmd>CodeActionMenu<cr>", "Code Action" },
     d = { "<cmd>lua require('telescope.builtin').lsp_definitions()<cr>", "Goto Definition" },
     f = { "<cmd>lua vim.lsp.buf.format({async = true})<cr>", "Format" },
     h = { "<cmd>lua vim.lsp.buf.hover()<cr>", "Hover" },
@@ -173,6 +165,7 @@ local mappings = {
     s = { "<cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>", "Document Symbols" },
     t = { "<cmd>lua require('telescope.builtin').lsp_type_definitions()<cr>", "Type Definition" },
     w = { "<cmd>lua require('telescope.builtin').diagnostics()<cr>", "Diagnostics" },
+    o = { "<cmd>SymbolsOutline<cr>", "Outline" },
     P = {
       name = "Peek",
       d = { "<cmd>lua require('user.lsp.peek').Peek('definition')<cr>", "Definition" },
@@ -215,6 +208,22 @@ local mappings = {
     },
   },
 
+  n = {
+    name = "Navigation",
+    h = { "<cmd>HopWord<cr>", "Hop" },
+    t = { "<cmd>tabnew<cr>", "New Tab" },
+    n = { "<cmd>tabn<cr>", "Next Tab" },
+    p = { "<cmd>tabp<ncr>", "Previous Tab" },
+    c = { "<cmd>tabclose<cr>", "Close Tab" },
+  },
+
+  S = {
+    name = "Session",
+    c = { "<cmd>lua require('persistence').load()<cr>", "Restore last session for current dir" },
+    l = { "<cmd>lua require('persistence').load({ last = true })<cr>", "Restore last session" },
+    Q = { "<cmd>lua require('persistence').stop()<cr>", "Quit without saving session" },
+  },
+
   d = {
     name = "Debug",
     b = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Breakpoint" },
@@ -228,21 +237,12 @@ local mappings = {
     x = { "<cmd>lua require'dap'.terminate()<cr>", "Exit" },
   },
 
-  n = {
-    name = "Navigation",
-    h = { "<cmd>HopWord<cr>", "Hop" },
-    o = { "<cmd>SymbolsOutline<cr>", "Outline" },
-    t = { "<cmd>tabnew<cr>", "New Tab" },
-    n = { "<cmd>tabn<cr>", "Next Tab" },
-    p = { "<cmd>tabp<ncr>", "Previous Tab" },
-    c = { "<cmd>tabclose<cr>", "Close Tab" },
-  },
-
-  S = {
-    name = "Session",
-    c = { "<cmd>lua require('persistence').load()<cr>", "Restore last session for current dir" },
-    l = { "<cmd>lua require('persistence').load({ last = true })<cr>", "Restore last session" },
-    Q = { "<cmd>lua require('persistence').stop()<cr>", "Quit without saving session" },
+  z = {
+    name = "Zen",
+    a = { "<cmd>TZAtaraxis<cr>", "Ataraxis" },
+    m = { "<cmd>TZMinimalist<cr>", "Minimalist" },
+    n = { "<cmd>TZNarrow<cr>", "Narrow" },
+    f = { "<cmd>TZFocus<cr>", "Focus" },
   },
 }
 
