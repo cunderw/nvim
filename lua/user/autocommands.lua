@@ -168,10 +168,9 @@ vim.api.nvim_create_autocmd("ColorScheme", {
   end,
 })
 
--- open folds on file open
-vim.api.nvim_create_autocmd({ "BufReadPost" }, {
-  pattern = "*",
-  callback = function()
-    vim.cmd "silent! :%foldopen!"
-  end,
-})
+--vim.api.nvim_create_autocmd("FileType", {
+--  pattern = "dapui*",
+--  callback = function()
+--    vim.cmd "set laststatus=3"
+--  end,
+--})

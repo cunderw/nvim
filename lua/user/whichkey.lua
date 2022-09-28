@@ -3,6 +3,8 @@ if not status_ok then
   return
 end
 
+require('legendary').setup()
+
 local setup = {
   plugins = {
     marks = true, -- shows a list of your marks on ' and `
@@ -79,6 +81,7 @@ local opts = {
 }
 
 local mappings = {
+  ["o"] = { "<cmd>Legendary<cr>", "Legendary" },
   ["a"] = { "<cmd>Alpha<cr>", "Alpha" },
   ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
   ["w"] = { "<cmd>w!<CR>", "Save" },
@@ -120,6 +123,11 @@ local mappings = {
       "<cmd>Gitsigns diffthis HEAD<cr>",
       "Diff",
     },
+    D = {
+      name = "Diffview",
+      o = { "<cmd>DiffviewOpen", "Diffview Open" },
+      c = { "<cmd>DiffviewClose", "Diffview Close" }
+    }
   },
 
   s = {
@@ -248,3 +256,16 @@ local mappings = {
 
 which_key.setup(setup)
 which_key.register(mappings, opts)
+
+--local l_status_ok, legendary = pcall(require, "legendary")
+--if not l_status_ok then
+--  return
+--end
+--
+--legendary.setup({
+--  which_key = {
+--    mappings = mappings,
+--    opts = opts,
+--    do_binding = false,
+--  },
+--})
