@@ -45,3 +45,20 @@ local vmappings = {
 
 which_key.register(mappings, opts)
 which_key.register(vmappings, vopts)
+
+
+local file_types = {
+  'go'
+}
+
+local launch_types = {
+  go = file_types
+}
+
+
+local load_launchjs = function()
+  require("dap.ext.vscode").load_launchjs(nil, launch_types)
+end
+if not pcall(load_launchjs) then
+  vim.notify("Failed to parse launch.json", "warn")
+end

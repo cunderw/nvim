@@ -216,6 +216,7 @@ return packer.startup(function(use)
     requires = { "mfussenegger/nvim-dap" }
   })
   use({ "MunifTanjim/eslint.nvim" })
+  use({ "MunifTanjim/prettier.nvim" })
 
   if PACKER_BOOTSTRAP then
     require("packer").sync()

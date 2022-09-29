@@ -40,97 +40,53 @@ go.setup({
   quick_type_flags = { "--just-types" },
 })
 
-local dap_status_ok, dap = pcall(require, "dap")
-if not dap_status_ok then
-  return
-end
-
-dap.adapters.go = {
-  type = 'executable';
-  command = 'node';
-  args = { os.getenv('HOME') .. '/.local/share/nvim/site/pack/packer/opt/vscode-go/dist/debugAdapter.js' };
-}
-
-dap.configurations.go = {
-  {
-    name = "run",
-    type = "go",
-    request = "launch",
-    program = "${fileDirname}",
-    mode = "debug",
-    args = {
-      "${fileDirname}/meta/local.conf"
-    },
-    dlvToolPath = vim.fn.exepath(os.getenv('HOME') .. '/go/bin/dlv') -- Adjust to where delve is installed
-  },
-  {
-    name = "test",
-    type = "go",
-    request = "launch",
-    program = "${file}",
-    mode = "test",
-    dlvToolPath = vim.fn.exepath(os.getenv('HOME') .. '/go/bin/dlv') -- Adjust to where delve is installed
-  },
-  {
-    name = "integration",
-    type = "go",
-    request = "launch",
-    program = "${file}",
-    mode = "test",
-    cwd = "${fileDirname}",
-    buildFlags = "-tags=integration",
-    dlvToolPath = vim.fn.exepath(os.getenv('HOME') .. '/go/bin/dlv') -- Adjust to where delve is installed
-  },
-  {
-    type = 'go';
-    name = 'Debug';
-    request = 'launch';
-    showLog = false;
-    program = "${file}";
-    dlvToolPath = vim.fn.exepath(os.getenv('HOME') .. '/go/bin/dlv') -- Adjust to where delve is installed
-  }
-}
--- nvim-dap-go and using delver directly is expirmental
---local dap_go_status_ok, dapgo = pcall(require, "dap-go")
+-- local dap_status_ok, dap = pcall(require, "dap")
+-- if not dap_status_ok then
+--   return
+-- end
 --
---if not dap_go_status_ok then
---  return
---end
+-- dap.adapters.go = {
+--   type = 'executable';
+--   command = 'node';
+--   args = { os.getenv('HOME') .. '/.local/share/nvim/site/pack/packer/opt/vscode-go/dist/debugAdapter.js' };
+-- }
 --
---dapgo.setup()
---
---local dap_status_ok, dap = pcall(require, "dap")
---if not dap_status_ok then
---  return
---end
---
---vim.list_extend(
---  dap.configurations.go, {
---  {
---    name = "run",
---    type = "go",
---    request = "launch",
---    program = "${fileDirname}",
---    mode = "debug",
---    args = {
---      "${fileDirname}/meta/local.conf"
---    },
---  },
---  {
---    name = "test",
---    type = "go",
---    request = "launch",
---    program = "${file}",
---    mode = "test",
---  },
---  {
---    name = "integration",
---    type = "go",
---    request = "launch",
---    program = "${file}",
---    mode = "test",
---    cwd = "${fileDirname}",
---    buildFlags = "-tags=integration",
---  }
---}
---)
+-- dap.configurations.go = {
+--   {
+--     name = "run",
+--     type = "go",
+--     request = "launch",
+--     program = "${fileDirname}",
+--     mode = "debug",
+--     args = {
+--       "${fileDirname}/meta/local.conf"
+--     },
+--     dlvToolPath = vim.fn.exepath(os.getenv('HOME') .. '/go/bin/dlv') -- Adjust to where delve is installed
+--   },
+--   {
+--     name = "test",
+--     type = "go",
+--     request = "launch",
+--     program = "${file}",
+--     mode = "test",
+--     dlvToolPath = vim.fn.exepath(os.getenv('HOME') .. '/go/bin/dlv') -- Adjust to where delve is installed
+--   },
+--   {
+--     name = "integration",
+--     type = "go",
+--     request = "launch",
+--     program = "${file}",
+--     mode = "test",
+--     cwd = "${fileDirname}",
+--     buildFlags = "-tags=integration",
+--     dlvToolPath = vim.fn.exepath(os.getenv('HOME') .. '/go/bin/dlv') -- Adjust to where delve is installed
+--   },
+--   {
+--     type = 'go';
+--     name = 'Debug';
+--     request = 'launch';
+--     showLog = false;
+--     program = "${file}";
+--     dlvToolPath = vim.fn.exepath(os.getenv('HOME') .. '/go/bin/dlv') -- Adjust to where delve is installed
+--   }
+-- }
