@@ -25,6 +25,7 @@ local diff = {
 }
 
 vim.g.tpipeline_autoembed = 0
+vim.g.tpipeline_cursormoved = 1
 lualine.setup({
   "branch",
   options = {

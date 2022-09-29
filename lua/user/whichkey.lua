@@ -95,6 +95,7 @@ local mappings = {
   },
   ["F"] = { "<cmd>lua require('telescope.builtin').live_grep()<cr>", "Find Text" },
   ["P"] = { "<cmd>lua require('telescope').load_extension('projects').projects()<cr>", "Projects" },
+  ["R"] = { "<cmd>source $MYVIMRC<cr>", "Reload" },
   ["?"] = { "<cmd>Cheatsheet<cr>", "Cheatsheet" },
 
   p = {
