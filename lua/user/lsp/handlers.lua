@@ -79,7 +79,8 @@ local allow_format = {
   "null-ls",
   "jdt.ls",
   "jdtls",
-  "sumneko_lua"
+  "sumneko_lua",
+  "gopls"
 }
 
 local lsp_formatting = function(bufnr)

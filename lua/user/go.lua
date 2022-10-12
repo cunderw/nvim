@@ -6,9 +6,9 @@ end
 
 go.setup({
   -- notify: use nvim-notify
-  notify = false,
+  notify = true,
   -- auto commands
-  auto_format = true,
+  auto_format = false,
   auto_lint = true,
   -- linters: revive, errcheck, staticcheck, golangci-lint
   linter = "revive",
