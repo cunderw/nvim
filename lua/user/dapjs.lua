@@ -16,53 +16,54 @@ dapjs.setup({
 })
 
 -- Default configurations
+local defaults = {
+  {
+    type = "pwa-node",
+    request = "launch",
+    name = "Node Launch",
+    program = "${file}",
+    cwd = "${workspaceFolder}",
+    sourceMaps = true,
+    protocol = "inspector",
+    console = "integratedTerminal",
+    resolveSourceMapLocations = {
+      "${workspaceFolder}/dist/**/*.js",
+      "${workspaceFolder}/**",
+      "!**/node_modules/**",
+    },
+    runtimeExecutable = "${workspaceFolder}/node_modules/.bin/ts-node",
+  },
+  {
+    type = "pwa-node",
+    request = "attach",
+    name = "Node Attach",
+    processId = require("dap.utils").pick_process,
+    cwd = "${workspaceFolder}",
+    sourceMaps = true,
+    protocol = "inspector",
+    console = "integratedTerminal",
+    resolveSourceMapLocations = {
+      "${workspaceFolder}/dist/**/*.js",
+      "${workspaceFolder}/**",
+      "!**/node_modules/**",
+    },
+  },
+  {
+    type = "pwa-node",
+    request = "launch",
+    name = "Debug Jest Tests",
+    -- trace = true, -- include debugger info
+    runtimeExecutable = "node",
+    runtimeArgs = {
+      "./node_modules/jest/bin/jest.js",
+      "--runInBand",
+    },
+    rootPath = "${workspaceFolder}",
+    cwd = "${workspaceFolder}",
+    console = "integratedTerminal",
+    internalConsoleOptions = "neverOpen",
+  },
+}
 for _, language in ipairs({ "typescript", "javascript" }) do
-  dap.configurations[language] = {
-    {
-      type = "pwa-node",
-      request = "launch",
-      name = "Node Launch",
-      program = "${file}",
-      cwd = "${workspaceFolder}",
-      sourceMaps = true,
-      protocol = "inspector",
-      console = "integratedTerminal",
-      resolveSourceMapLocations = {
-        "${workspaceFolder}/dist/**/*.js",
-        "${workspaceFolder}/**",
-        "!**/node_modules/**",
-      },
-      runtimeExecutable = "${workspaceFolder}/node_modules/.bin/ts-node",
-    },
-    {
-      type = "pwa-node",
-      request = "attach",
-      name = "Node Attach",
-      processId = require("dap.utils").pick_process,
-      cwd = "${workspaceFolder}",
-      sourceMaps = true,
-      protocol = "inspector",
-      console = "integratedTerminal",
-      resolveSourceMapLocations = {
-        "${workspaceFolder}/dist/**/*.js",
-        "${workspaceFolder}/**",
-        "!**/node_modules/**",
-      },
-    },
-    {
-      type = "pwa-node",
-      request = "launch",
-      name = "Debug Jest Tests",
-      -- trace = true, -- include debugger info
-      runtimeExecutable = "node",
-      runtimeArgs = {
-        "./node_modules/jest/bin/jest.js",
-        "--runInBand",
-      },
-      rootPath = "${workspaceFolder}",
-      cwd = "${workspaceFolder}",
-      console = "integratedTerminal",
-      internalConsoleOptions = "neverOpen",
-    },
-  }
+  vim.list_extend(dap.configurations[language], defaults)
 end
