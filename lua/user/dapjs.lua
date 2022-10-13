@@ -65,5 +65,8 @@ local defaults = {
   },
 }
 for _, language in ipairs({ "typescript", "javascript" }) do
+  if dap.configurations[language] == nil then
+    dap.configurations[language] = {}
+  end
   vim.list_extend(dap.configurations[language], defaults)
 end
