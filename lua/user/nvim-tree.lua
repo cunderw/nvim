@@ -11,6 +11,7 @@ end
 local tree_cb = nvim_tree_config.nvim_tree_callback
 
 nvim_tree.setup({
+  hijack_cursor = true,
   update_focused_file = {
     enable = false,
     update_cwd = false,
@@ -19,6 +20,7 @@ nvim_tree.setup({
     group_empty = true,
     root_folder_modifier = ":t",
     full_name = false,
+    highlight_opened_files = "name",
     icons = {
       glyphs = {
         default = "",

@@ -49,9 +49,12 @@ return packer.startup(function(use)
   use({ "kyazdani42/nvim-web-devicons" })
   use({ "nvim-lualine/lualine.nvim" })
   use({ "folke/tokyonight.nvim" })
-  use({ "tiagovla/tokyodark.nvim" })
   use({ "vimpostor/vim-tpipeline" })
   use({ "norcalli/nvim-colorizer.lua" })
+  use({
+    "tiagovla/tokyodark.nvim",
+    commit = "2d60e9dc2b04fd5fc1761c20941eab6731c9ada6"
+  })
 
   -- UI
   use({ "gennaro-tedesco/nvim-peekup" })
@@ -138,6 +141,7 @@ return packer.startup(function(use)
   -------------------------------
   -- Development Plugins --
   -------------------------------
+  use({ "github/copilot.vim" })
   -- LSP
   use({ "neovim/nvim-lspconfig" }) -- enable LSP
   use({ "jose-elias-alvarez/null-ls.nvim" }) -- for formatters and linters
@@ -201,7 +205,7 @@ return packer.startup(function(use)
   use({
     "golang/vscode-go",
     opt = true,
-    run = "npm install && npm run compile",
+    run = "git reset --hard && npm install && npm run compile",
   })
 
   -- Typescript
@@ -209,7 +213,7 @@ return packer.startup(function(use)
   use({
     "microsoft/vscode-js-debug",
     opt = true,
-    run = "npm install --legacy-peer-deps && npm run compile"
+    run = "git reset --hard && npm install --legacy-peer-deps && npm run compile"
   })
   use({
     "mxsdev/nvim-dap-vscode-js",

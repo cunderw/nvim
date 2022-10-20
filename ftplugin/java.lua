@@ -9,7 +9,7 @@ if not status_cmp_ok then
   return
 end
 capabilities.textDocument.completion.completionItem.snippetSupport = false
-capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
+capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 
 local status, jdtls = pcall(require, "jdtls")
 if not status then
@@ -207,7 +207,7 @@ local mappings = {
     c = { "<Cmd>lua require('jdtls').extract_constant()<CR>", "Extract Constant" },
     t = { "<Cmd>lua require'jdtls'.test_nearest_method()<CR>", "Test Method" },
     T = { "<Cmd>lua require'jdtls'.test_class()<CR>", "Test Class" },
-    C = { "<Cmd>lua require('jdtls.dap').setup_dap_main_class_configs()", "Setup Main Clas Configs" },
+    C = { "<Cmd>lua require('jdtls.dap').setup_dap_main_class_configs()<CR>", "Setup Main Clas Configs" },
     u = { "<Cmd>JdtUpdateConfig<CR>", "Update Config" },
   },
 }

@@ -38,12 +38,17 @@ local go_file_types = {
   'go'
 }
 
+local java_file_types = {
+  'java'
+}
+
 local launch_types = {
   node = ts_file_types,
   ["node-terminal"] = ts_file_types,
   ["pwa-node"] = ts_file_types,
   ["pwa-chrome"] = ts_file_types,
-  go = go_file_types
+  go = go_file_types,
+  java = java_file_types
 }
 
 local load_launchjs = function()
