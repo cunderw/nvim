@@ -51,10 +51,7 @@ return packer.startup(function(use)
   use({ "folke/tokyonight.nvim" })
   use({ "vimpostor/vim-tpipeline" })
   use({ "norcalli/nvim-colorizer.lua" })
-  use({
-    "tiagovla/tokyodark.nvim",
-    commit = "2d60e9dc2b04fd5fc1761c20941eab6731c9ada6"
-  })
+  use({ "tiagovla/tokyodark.nvim" })
 
   -- UI
   use({ "gennaro-tedesco/nvim-peekup" })

@@ -64,7 +64,7 @@ end
 
 local config = {
   cmd = {
-    "/opt/homebrew/Cellar/openjdk@17/17.0.4/bin/java", -- or '/path/to/java11_or_newer/bin/java'
+    "/opt/homebrew/Cellar/openjdk@17/17.0.5/bin/java", -- or '/path/to/java11_or_newer/bin/java'
     "-Declipse.application=org.eclipse.jdt.ls.core.id1",
     "-Dosgi.bundles.defaultStartLevel=4",
     "-Declipse.product=org.eclipse.jdt.ls.core.product",
