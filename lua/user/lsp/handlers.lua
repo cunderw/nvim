@@ -80,7 +80,10 @@ local allow_format = {
   "jdt.ls",
   "jdtls",
   "sumneko_lua",
-  "gopls"
+  "gopls",
+  "eslint",
+  "tsserver",
+  "prettier"
 }
 
 local lsp_formatting = function(bufnr)

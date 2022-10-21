@@ -141,10 +141,10 @@ vim.api.nvim_create_autocmd({ "CursorHold" }, {
   end,
 })
 
-vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-  pattern = { "*.ts" },
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+  pattern = { "*.ts,*.tsx,*.ts,*.jsx,*.js" },
   callback = function()
-    vim.lsp.buf.format { async = true }
+    vim.cmd "EslintFixAll"
   end,
 })
 
@@ -167,10 +167,3 @@ vim.api.nvim_create_autocmd("ColorScheme", {
     end
   end,
 })
-
---vim.api.nvim_create_autocmd("FileType", {
---  pattern = "dapui*",
---  callback = function()
---    vim.cmd "set laststatus=3"
---  end,
---})

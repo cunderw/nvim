@@ -85,3 +85,8 @@ cargo install stylua
 ```shell
 pip install beautysh
 ```
+
+## Typescript / Javascript
+```
+npm i -g vscode-langservers-extracted
+```
