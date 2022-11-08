@@ -55,7 +55,7 @@ local load_launchjs = function()
   require("dap.ext.vscode").load_launchjs(nil, launch_types)
 end
 if not pcall(load_launchjs) then
-  vim.notify("Failed to parse launch.json", "warn")
+  vim.notify("Failed to parse launch.json", vim.log.levels.WARN)
 end
 
 -- Adds dlv path to all added configuration, setting it in laun.json does not work

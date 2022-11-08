@@ -43,29 +43,5 @@ bufferline.setup({
         return true
       end
     end,
-    groups = {
-      items = {
-        {
-          name = "Proto",
-          highlight = { underline = true, sp = "blue" },
-          auto_close = true,
-          icon = "",
-          priority = 2,
-          matcher = function(buf)
-            return buf.name:match("%.proto")
-          end,
-        },
-        {
-          name = "Tests",
-          highlight = { underline = true, sp = "blue" },
-          auto_close = true,
-          icon = "",
-          priority = 3,
-          matcher = function(buf)
-            return buf.name:match("%_test") or buf.name:match("%_spec")
-          end,
-        },
-      },
-    },
   },
 })

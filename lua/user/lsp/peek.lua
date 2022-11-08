@@ -62,7 +62,8 @@ local function create_floating_file(location, opts)
 
   -- Set some autocmds to close the window
   vim.api.nvim_command(
-    string.format("autocmd %s <buffer> ++once lua pcall(vim.api.nvim_win_close, %d, true)", unpack(close_events), winnr)
+    string.format("autocmd %s <buffer> ++once lua pcall(vim.api.nvim_win_close, %d, true)", table.unpack(close_events),
+      winnr)
   )
 
   return bufnr, winnr
