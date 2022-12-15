@@ -26,6 +26,19 @@ dap.configurations.go = {
   }
 }
 
+-- Chrome DAP
+dap.adapters.chrome = {
+  type = "executable",
+  command = "node",
+  args = { os.getenv("HOME") .. "/.local/share/nvim/site/pack/packer/opt/vscode-chrome-debug/out/src/chromeDebug.js" } -- TODO adjust
+}
+
+dap.adapters.node2 = {
+  type = 'executable',
+  command = 'node',
+  args = { os.getenv('HOME') .. '/dev/microsoft/vscode-node-debug2/out/src/nodeDebug.js' },
+}
+
 -- Setup launch.json loading
 local ts_file_types = {
   'typescriptreact',
@@ -44,9 +57,11 @@ local java_file_types = {
 
 local launch_types = {
   node = ts_file_types,
+  node2 = ts_file_types,
   ["node-terminal"] = ts_file_types,
   ["pwa-node"] = ts_file_types,
   ["pwa-chrome"] = ts_file_types,
+  ["chrome"] = ts_file_types,
   go = go_file_types,
   java = java_file_types
 }

@@ -138,7 +138,6 @@ return packer.startup(function(use)
   -------------------------------
   -- Development Plugins --
   -------------------------------
-  use({ "github/copilot.vim" })
   -- LSP
   use({ "neovim/nvim-lspconfig" }) -- enable LSP
   use({ "jose-elias-alvarez/null-ls.nvim" }) -- for formatters and linters
@@ -156,6 +155,9 @@ return packer.startup(function(use)
       { "nvim-treesitter/nvim-treesitter" }
     }
   }
+  use 'princejoogie/tailwind-highlight.nvim'
+  use 'glepnir/lspsaga.nvim' -- LSP UIs
+
   -- Git
   use({ "lewis6991/gitsigns.nvim" })
   use({ "f-person/git-blame.nvim" })
@@ -211,6 +213,11 @@ return packer.startup(function(use)
     "microsoft/vscode-js-debug",
     opt = true,
     run = "git reset --hard && npm install --legacy-peer-deps && npm run compile"
+  })
+  use({
+    "microsoft/vscode-chrome-debug",
+    opt = true,
+    run = "git reset --hard && npm install --legacy-peer-deps && npm run build"
   })
   use({
     "mxsdev/nvim-dap-vscode-js",
