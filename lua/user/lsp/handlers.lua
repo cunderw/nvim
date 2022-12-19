@@ -75,6 +75,9 @@ local function lsp_keymaps(bufnr)
 end
 
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+local eslintGroup = vim.api.nvim_create_augroup("eslintGroup", {})
+local tsgroup = vim.api.nvim_create_augroup("tsGroup", {})
+
 local allow_format = {
   "null-ls",
   "jdt.ls",
