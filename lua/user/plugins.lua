@@ -138,6 +138,7 @@ return packer.startup(function(use)
   -------------------------------
   -- Development Plugins --
   -------------------------------
+  use({ "github/copilot.vim" })
   -- LSP
   use({ "neovim/nvim-lspconfig" }) -- enable LSP
   use({ "jose-elias-alvarez/null-ls.nvim" }) -- for formatters and linters
@@ -156,7 +157,6 @@ return packer.startup(function(use)
     }
   }
   use 'princejoogie/tailwind-highlight.nvim'
-  use 'glepnir/lspsaga.nvim' -- LSP UIs
 
   -- Git
   use({ "lewis6991/gitsigns.nvim" })
@@ -190,22 +190,22 @@ return packer.startup(function(use)
     opt = true,
     run = "mvn clean install",
   })
-  use({
-    "microsoft/vscode-java-test",
-    opt = true,
-    run = "npm install && npm run build-plugin",
-  })
-
+--  use({
+--    "microsoft/vscode-java-test",
+--    opt = true,
+--    run = "npm install && npm run build-plugin",
+--  })
+--
 
   -- Golang
-  use({ "crispgm/nvim-go" })
-  use({ "leoluz/nvim-dap-go" })
-  use({ "rfratto/vim-go-testify" })
-  use({
-    "golang/vscode-go",
-    opt = true,
-    run = "git reset --hard && npm install && npm run compile",
-  })
+--  use({ "crispgm/nvim-go" })
+--  use({ "leoluz/nvim-dap-go" })
+--  use({ "rfratto/vim-go-testify" })
+--  use({
+--    "golang/vscode-go",
+--    opt = true,
+--    run = "git reset --hard && npm install && npm run compile",
+--  })
 
   -- Typescript
   use({ "jose-elias-alvarez/typescript.nvim" })
